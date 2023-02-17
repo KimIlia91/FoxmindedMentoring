@@ -25,4 +25,7 @@ C#/.NET course.
 # BulkyBookWeb project 
 
 ASP.NET application using ASP.NET Core MVC, Entity Framework Core and ASP.NET Core Identity.
+
 - [ ] [Bulky Book web link](https://bulkybookwebfull.azurewebsites.net/) 
+
+If the link doesn't work, my Azure subscription may have ended.
