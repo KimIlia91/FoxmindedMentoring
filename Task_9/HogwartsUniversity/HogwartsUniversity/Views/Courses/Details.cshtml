@@ -1,0 +1,37 @@
+﻿@model HogwartsUniversity.Models.Course
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div>
+    <h4>@Model.Name course</h4>
+    <h5>List of groups</h5>
+    <a asp-controller="Groups" asp-action="Create" asp-route-id="@Model?.Id" class="btn btn-outline-primary"><i class="fas fa-plus"></i>Add new group</a>
+    <table class="table">
+        <tr>
+            <th class="col-sm-3"></th>
+            <th class="col-sm-5">Group name</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model.Groups)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-controller="Groups" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Groups" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Groups" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,53 @@
+﻿@model HogwartsUniversity.Models.Group
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <h5>Students list of group</h5>
+    <a asp-controller="Students" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-outline-primary">Add new student</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col-sm-5">Last name</th>
+                <th class="col-sm-5"> First name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Students)
+            {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    <a asp-controller="Students" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Students" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Students"  asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-controller="Courses" asp-action="Details" asp-route-id="@Model?.CourseId">Back to List</a>
+</div>
